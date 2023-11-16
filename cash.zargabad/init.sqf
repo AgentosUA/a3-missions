@@ -1,8 +1,8 @@
 [] spawn {
     if (isServer) then {
         totalrounds = 10;
-        roundtime = 15;
-        timeouttime = 15;
+        roundtime = 60;
+        timeouttime = 45;
         
         isRoundStarted = false;
         isBlueAlive = true;
@@ -20,11 +20,11 @@
         // Returns all players of side east.
         
         currentround = 1;
-        target = "CUP_hromada_beden_dekorativniX" createvehicle getPos start_place;
+        target = "CUP_hromada_beden_dekorativniX" createvehicle getPos target_spawn_1;
         
         createNewCargo = {
             deletevehicle target;
-            target = "CUP_hromada_beden_dekorativniX" createvehicle getPos start_place;
+            target = "CUP_hromada_beden_dekorativniX" createvehicle getPos target_spawn_1;
         };
         
         startNewround = {
@@ -35,18 +35,26 @@
             isRedAlive = true;
             _positions = [
                 [getPos target_spawn_1, getPos west_spawn_1, getPos east_spawn_1]
-                [getPos target_spawn_2, getPos west_spawn_2, getPos east_spawn_2]
-                [getPos target_spawn_3, getPos west_spawn_3, getPos east_spawn_3]
+                // [getPos target_spawn_2, getPos west_spawn_2, getPos east_spawn_2]
+                // [getPos target_spawn_3, getPos west_spawn_3, getPos east_spawn_3]
             ];
 
-            /* Teleport players to bases */
+            /* Teleport players & target to round positions */
             _newPosition = selectRandom(_positions);
-            _currentPosition = _newPosition[0];
-            _westPositions = _newPosition[1];
-            _eastPositions = _newPosition[1];
+            _targetPosition = _newPosition select 0;
+            _westPosition = _newPosition select 1;
+            _eastPosition = _newPosition select 2;
             
             target setDamage 0;
-            target setPos _currentPosition;
+            target setPos _targetPosition;
+
+            {
+                _x setPos _westPosition;
+            } forEach westPlayers;
+
+            {
+                _x setPos _eastPosition;
+            } forEach eastPlayers;
             
             sleep 1;
             isRoundStarted = true;
@@ -76,7 +84,7 @@
         };
         
         displayWins = {
-            hintSilent format["BLUEfor: %1 \nREDfor: %1", blueWins, redWins];
+            hintSilent format["West: %1 \nEast: %1", blueWins, redWins];
             sleep 5;
         };
         
@@ -91,18 +99,6 @@
         };
         
         checkWinside = {
-            isRoundStarted = false;
-            sleep 1;
-
-            /* Teleport players to bases */
-            {
-                _x setPos getPos respawn_west;
-            } forEach westPlayers;
-
-            {
-                _x setPos getPos respawn_east;
-            } forEach eastPlayers;
-
             switch true do {
                 case (!alive target || !isRedAlive): {
                     blueWins = blueWins + 1;
@@ -114,6 +110,18 @@
                     hint "Redfor wins!";
                 }
             };
+
+             isRoundStarted = false;
+            sleep 1;
+
+            /* Teleport players to bases */
+            {
+                _x setPos getPos respawn_west;
+            } forEach westPlayers;
+
+            {
+                _x setPos getPos respawn_east;
+            } forEach eastPlayers;
 
             sleep 5;
             
