@@ -1,6 +1,7 @@
 [] spawn {
     if (isServer) then {
-        totalrounds = 10;
+        // TODO: make this 3 params customizable from lobby
+        totalrounds = 1;
         roundtime = 60;
         timeouttime = 45;
         
@@ -9,17 +10,18 @@
         isRedAlive = true;
         blueWins = 0;
         redWins = 0;
+        currentRound = 0;
         
         westPlayers = allplayers select {
             side _x == west
         };
         // Returns all players of side west.
-        eastPlayers = allUnits select {
+        eastPlayers = allplayers select {
             side _x == east
         };
         // Returns all players of side east.
         
-        currentround = 1;
+        
         target = "CUP_hromada_beden_dekorativniX" createvehicle getPos target_spawn_1;
         
         createNewCargo = {
@@ -30,7 +32,7 @@
         startNewround = {
             [] call createNewCargo;
 
-            _time = roundtime;
+            _time = roundtime - 5;
             isBlueAlive = true;
             isRedAlive = true;
             _positions = [
@@ -56,21 +58,30 @@
                 _x setPos _eastPosition;
             } forEach eastPlayers;
             
-            sleep 1;
             isRoundStarted = true;
+
+            
             
             while {_time > 0 && isBlueAlive && isRedAlive && alive target} do {
                _time = _time - 1;
-                hintSilent format["round time left: \n %1", [((_time)/60)+.01, "HH:MM"] call BIS_fnc_timetoString];
+                if (_time < roundtime - 5) then {
+                    hintSilent format["Round #%1 started!", currentRound + 1];
+                } else {
+                    hintSilent format["Round time left: \n %1", [((_time)/60)+.01, "HH:MM"] call BIS_fnc_timetoString];
+                };
                 sleep 1;
             };
         };
         
-        welcomehint = {
-            hintSilent "Welcome to the Cash Destroy mode!";
+        welcomeMessage = {
+            sleep 2;
+            hintSilent "Welcome to the Cache Destroy!";
             sleep 5;
+            hintSilent "Rules are simple:\nWest team need to find & destroy weapon cache or eliminate enemy team\nEast team need to defend weapon cache or eliminate enemy team";
+            sleep 10;
             
-            hintSilent "Game starting in 5 seconds!";
+            hintSilent "Game starting in 10 seconds!";
+            sleep 5;
             hintSilent "5";
             sleep 1;
             hintSilent "4";
@@ -84,7 +95,7 @@
         };
         
         displayWins = {
-            hintSilent format["West: %1 \nEast: %1", blueWins, redWins];
+            hintSilent format["West: %1 \nEast: %2", blueWins, redWins];
             sleep 5;
         };
         
@@ -99,19 +110,16 @@
         };
         
         checkWinside = {
-            switch true do {
-                case (!alive target || !isRedAlive): {
-                    blueWins = blueWins + 1;
-                    hint "Bluefor wins!";
-                };
+            isRoundStarted = false;
 
-                case (alive target || !isBlueAlive): {
-                    redWins = redWins + 1;
-                    hint "Redfor wins!";
-                }
+            if (!alive target || !isRedAlive) then {
+                blueWins = blueWins + 1;
+                hint "West wins!";
+            } else {
+                redWins = redWins + 1;
+                hint "East wins!";
             };
 
-             isRoundStarted = false;
             sleep 1;
 
             /* Teleport players to bases */
@@ -124,38 +132,27 @@
             } forEach eastPlayers;
 
             sleep 5;
-            
-            // if (!alive target || !isRedAlive) exitWith {
-            //     blueWins = blueWins + 1;
-            //     hint "Bluefor wins!";
-            //     sleep 5;
-            // };
-            
-            // if (alive target || !isBlueAlive) exitWith {
-            //     redWins = redWins + 1;
-            //     hint "Redfor wins!";
-            //     sleep 5;
-            //     exitWith {};
-            // };
         };
     };
     
     start = {
-        [] call welcomehint;
+        [] call welcomeMessage;
         [] call createNewCargo;
         
-        while {currentround < totalrounds} do {
+        while {currentRound < totalrounds} do {
             [] call startNewround;
             [] call checkWinside;
             [] call displayWins;
             [] call timeoutround;
-            currentround = currentround + 1;
+            currentRound = currentRound + 1;
         };
         
         if (blueWins > redWins) then {
             hint "Bluefor wins the match!";
+            sleep 5;
         } else {
             hint "Redfor wins the match!";
+            sleep 5;
         };
         
         ["END1"] remoteExec ["endMission", 0, true];
