@@ -79,6 +79,8 @@
             sleep 5;
             hintSilent "Rules are simple:\nWest team need to find & destroy weapon cache or eliminate enemy team\nEast team need to defend weapon cache or eliminate enemy team";
             sleep 10;
+
+            waitUntil { sleep 1; hint "Waiting for players..."; count westPlayers > 0 && count eastPlayers > 0; };
             
             hintSilent "Game starting in 10 seconds!";
             sleep 5;
