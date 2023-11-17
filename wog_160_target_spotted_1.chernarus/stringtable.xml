@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="Target spotted">
+	<Package name="warning headgear">
+		<Container name="warning">
+			<Key ID="STR_WOG_WINGS">
+				<Original>
+					&lt;t color='#42f20c' size = '1' font='PuristaBold'&gt;Attention!&lt;/t &gt;&lt;br/&gt;
+					&lt;t size = '1' font='PuristaBold' &gt;PUT ON YOUR HEADGEAR BACK!&lt;br/&gt;
+					&lt;t color='#42f20c' size = '2' font='PuristaBold'&gt;OR YOU'LL BE PANISHED!&lt;/t
+					&gt;&lt;
+				</Original>
+				<Russian>
+					&lt;t color='#42f20c' size = '1' font='PuristaBold'&gt;Внимание!&lt;/t &gt;&lt;br/&gt;
+					&lt;t size = '1' font='PuristaBold' &gt;Ну-ка вернул головной убор обратно,
+					сцуко!&lt;br/&gt;
+					&lt;t color='#42f20c' size = '2' font='PuristaBold'&gt;Иначе хуже будет!&lt;/t &gt;&lt;
+				</Russian>
+			</Key>
+			<Key ID="STR_WOG_DAMAGE">
+				<Original>
+					&lt;t color='#42f20c' size = '1' font='PuristaBold'&gt;DAMAGE APPLIE﻿D﻿!&lt;/t &gt;&lt;
+				</Original>
+				<Russian>
+					&lt;t color='#42f20c' size = '1' font='PuristaBold'&gt;ДАМАГ ПО ТЕЛУ НАНЕСЁН!
+					ПЕРЕВЯЗЫВАЙСЯ!&lt;/t &gt;&lt;
+				</Russian>
+			</Key>
+			<Key ID="STR_WOG_OK">
+				<Original>
+					&lt;t color='#42f20c' size = '1' font='PuristaBold'&gt;NICE! RUN A LITTLE!&lt;/t
+					&gt;&lt;br/&gt;
+				</Original>
+				<Russian>
+					&lt;t color='#42f20c' size = '1' font='PuristaBold'&gt;УМНИЦА, ИДИ ПОБЕГАЙ&lt;/t
+					&gt;&lt;br/&gt;
+				</Russian>
+			</Key>
+			<Key ID="STR_UnauthorisedCrew">
+				<English>You are not allowed to take this role!</English>
+				<Czech>Nejsi oprávněný k nastoupení do tohoto vozidla!</Czech>
+				<German>Sie sind nicht zur Benutzung dieses Fahrzeugs autorisiert!</German>
+				<Polish>Jesteś nieupoważniony do prowadzenia tego pojazdu!</Polish>
+				<Russian>Вы не уполномочены управлять этой техникой!</Russian>
+				<Spanish>¡No estás autorizado a utilizar este vehículo!</Spanish>
+				<French>Vous n’êtes pas autorisé à acceder à ce véhicule!</French>
+			</Key>
+			<Key ID="STR_enemy_look">
+				<English>
+					Enemy uniform
+				</English>
+				<Czech>
+					Jak vypadá nepřítel
+				</Czech>
+				<Russian>
+					Форма противника
+				</Russian>
+				<Spanish>
+					Cómo se ve el enemigo
+				</Spanish>
+			</Key>
+			<Key ID="STR_friendly_look">
+				<English>
+					Friendly uniform
+				</English>
+				<Czech>
+					Jaké přátelské jednotky vypadají
+				</Czech>
+				<Russian>
+					Форма союзника
+				</Russian>
+				<Spanish>
+					Cómo se ven las unidades amigables
+				</Spanish>
+			</Key>
+			<Key ID="STR_mission_conditions_title">
+				<Original>Mission conditions</Original>
+				<Russian>Условности миссии</Russian>
+			</Key>
+			<Key ID="STR_mission_conditions">
+				<Original>
+					&lt;font color='#FFDD00'&gt;General conditions&lt;/font&gt;:
+					&lt;br/&gt; - Everyone, except aviation, is forbidden to leave the borders of the map.
+					&lt;br/&gt; - The location of the Tochka-U is indicated by a GPS tracker every 3 minutes. (First appearance 15 minutes after the start!)
+					&lt;br/&gt; - Activation of the Tochka-U rocket is prohibited.
+					&lt;br/&gt; - Time limit: &lt;font color='#FF0000'&gt;120&lt;/font&gt; minutes.
+					&lt;br/&gt;&lt;br/&gt;&lt;font color='#FF1E22'&gt;CHDKZ&lt;/font&gt;:
+					&lt;br/&gt; - It is forbidden to cross the blue lines.
+					&lt;br/&gt; - BRDM-2UM is a MEDEVAC
+					&lt;br/&gt; - To win, you need to save the Tochka-U missile system.
+					&lt;br/&gt;&lt;br/&gt;&lt;font color='#3366FF'&gt;USMC&lt;/font&gt;:
+					&lt;br/&gt; - It is forbidden to ram Tochka-U with the help of aircraft or UAVs.
+					&lt;br/&gt; - To win, you need to destroy the Tochka-U missile system.
+				</Original>
+				<Russian>
+					&lt;font color='#FFDD00'&gt;Общие условности&lt;/font&gt;:
+					&lt;br/&gt; - Всем, кроме авиации, запрещено покидать границы карты.
+					&lt;br/&gt; - Местоположение Точки-У обозначается GPS-трекером каждые 3 минуты. (Первое появление через 15 минут после старта!)
+					&lt;br/&gt; - Запрещена активация ракеты Точки-У.
+					&lt;br/&gt; - Ограничение по времени: &lt;font color='#FF0000'&gt;120&lt;/font&gt; минут.
+					&lt;br/&gt;&lt;br/&gt;&lt;font color='#FF1E22'&gt;ЧДКЗ&lt;/font&gt;:
+					&lt;br/&gt; - Запрещено пересекать синии линии (считать бесконечными).
+					&lt;br/&gt; - БРДМ-2УМ является мед. транспортом
+					&lt;br/&gt; - Для победы нужно сохранить ракетный комплекс Точка-У.
+					&lt;br/&gt;&lt;br/&gt;&lt;font color='#3366FF'&gt;USMC&lt;/font&gt;:
+					&lt;br/&gt; - Запрещен таран Точки-У с помощью авиации и БПЛА.
+					&lt;br/&gt; - Для победы нужно уничтожить ракетный комплекс Точка-У.
+				</Russian>
+			</Key>
+		</Container>
+	</Package>
+</Project>
