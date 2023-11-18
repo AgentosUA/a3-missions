@@ -1,0 +1,51 @@
+author = "Agentos";
+onLoadName = "Cache Hunt 1.0";
+onLoadMission = "True classic from A2 players";
+
+class Params
+{
+	class TotalRounds { 
+		// Visible name in lobby settings list
+		title = "Total rounds";
+
+		// must be integers - commas e.g 1.5 are not allowed
+		values[] = { 3, 5, 13, 15 };
+
+		// Description of each selectable item - must have the same number of items as 'values'
+		// If texts are missing, the values will be displayed instead
+		texts[] = { "3 rounds", "5 rounds", "13 rounds", "15 rounds" };
+
+		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
+		default = 13;
+	};
+
+	class RoundTime { 
+		// Visible name in lobby settings list
+		title = "Round Time";
+
+		// must be integers - commas e.g 1.5 are not allowed
+		values[] = { 180 , 300, 600, 420, 600 };
+
+		// Description of each selectable item - must have the same number of items as 'values'
+		// If texts are missing, the values will be displayed instead
+		texts[] = { "3 minutes", "5 minutes", "7 minutes", "10 minutes" };
+
+		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
+		default = 300;
+	};
+
+	class PrepareTime { 
+		// Visible name in lobby settings list
+		title = "Prepare time";
+
+		// must be integers - commas e.g 1.5 are not allowed
+		values[] = { 30, 45, 60 };
+
+		// Description of each selectable item - must have the same number of items as 'values'
+		// If texts are missing, the values will be displayed instead
+		texts[] = { "30 seconds", "45 seconds", "1 minute" };
+
+		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
+		default = 45;
+	};
+};
