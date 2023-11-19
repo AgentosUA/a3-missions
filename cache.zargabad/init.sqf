@@ -2,6 +2,13 @@ TF_defaultwestbackpack = "rhs_sidor";
 TF_defaulteastbackpack = "rhs_sidor";
 
 [] spawn {
+    while {true} do {
+       waitUntil {inputAction "Eject" > 0 || inputAction "ingamePause" > 0};
+       ["Terminate"] call BIS_fnc_EGSpectator;
+    };
+};
+
+[] spawn {
     if (isServer) then {
         totalrounds = ["TotalRounds"] call BIS_fnc_getParamValue;
         roundtime = ["RoundTime"] call BIS_fnc_getParamValue;
@@ -41,7 +48,7 @@ TF_defaulteastbackpack = "rhs_sidor";
 
             "Waiting for players..." remoteExec ["hint"];
 
-            count westPlayers > 0 && count westPlayers > 0;
+            count westPlayers > 0 && count eastPlayers > 0;
         };
 
         westPlayers = allunits select {
@@ -70,11 +77,9 @@ TF_defaulteastbackpack = "rhs_sidor";
             };
             
             startNewround = {
-                
-
                 [] call createNewCargo;
                 
-                _time = roundtime - 5;
+                _time = roundtime;
                 isBlueAlive = true;
                 isRedAlive = true;
                 _entitites = [
@@ -121,14 +126,15 @@ TF_defaulteastbackpack = "rhs_sidor";
                 {
                     _x setDamage 0;
                     _x setPos _westPosition;
+                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
                 } forEach westPlayers;
 
                 {
                     _x setDamage 0;
                     _x setPos _eastPosition;
+                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
                 } forEach eastPlayers;
                 
-                sleep 1;
                 /* Activate check for alive players in base trigger */
 
                 /* Start round timer */
@@ -170,7 +176,23 @@ TF_defaulteastbackpack = "rhs_sidor";
             };
             
             timeoutround = {
-                ["Terminate"] call BIS_fnc_EGSpectator;
+                westPlayers = allunits select {
+                  side _x == west
+                };
+
+                eastPlayers = allunits select {
+                    side _x == east
+                };
+
+                {
+                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
+                } forEach westPlayers;
+
+                {
+                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
+                } forEach eastPlayers;
+
+
                 _timeouttime = timeouttime;
                 while {_timeouttime > 0} do {
                     _timeouttime = _timeouttime - 1;
@@ -197,11 +219,13 @@ TF_defaulteastbackpack = "rhs_sidor";
                 {
                     _x setDamage 0;
                     _x setPos getPos respawn_west;
+                    _x call ace_medical_treatment_fnc_fullHealLocal;
                 } forEach westPlayers;
 
                 {
                     _x setDamage 0;
                     _x setPos getPos respawn_east;
+                    _x call ace_medical_treatment_fnc_fullHealLocal;
                 } forEach eastPlayers;
 
                 sleep 5;
