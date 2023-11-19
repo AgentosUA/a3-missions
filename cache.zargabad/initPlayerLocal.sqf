@@ -1,4 +1,4 @@
-sameAsDeath = TRUE;  // false for loadout at start
+sameAsDeath = false;  // false for loadout at start
 loadoutAtStart = getUnitLoadout player;
 
 addMissionEventHandler ["EntityKilled", {

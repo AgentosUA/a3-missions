@@ -1,6 +1,7 @@
 TF_defaultwestbackpack = "rhs_sidor";
 TF_defaulteastbackpack = "rhs_sidor";
 currentHintMarker = "wmt_west_hint_1";
+targetMarker = "target_marker";
 
 hideSpectator = {
     ["Terminate"] remoteExecCall ["BIS_fnc_EGSpectator"];
@@ -22,6 +23,11 @@ hideSpectator = {
             currentHintMarker setMarkerColorLocal "ColorGreen";
        };
 
+       if (side group player == east && isRoundStarted) then {
+            targetMarker setMarkerAlphaLocal 1;
+            targetMarker setMarkerPosLocal getPos target;
+       };
+
        sleep 1;
     };
 };
@@ -41,7 +47,6 @@ hideSpectator = {
         currentRound = 0;
 
         target = "CUP_hromada_beden_dekorativniX" createvehicle getPos target_spawn_1;
-        targetMarker = "target_marker";
         targetSpawns = [target_spawn_1, target_spawn_2, target_spawn_3, target_spawn_4, target_spawn_5, target_spawn_6, target_spawn_7, target_spawn_8, target_spawn_9, target_spawn_10];
         westSpawns = ["west_spawn_1", "west_spawn_2", "west_spawn_3", "west_spawn_4", "west_spawn_5", "west_spawn_6", "west_spawn_7", "west_spawn_8", "west_spawn_9", "west_spawn_10"];
         eastSpawns = ["east_spawn_1", "east_spawn_2", "east_spawn_3", "east_spawn_4", "east_spawn_5", "east_spawn_6", "east_spawn_7", "east_spawn_8", "east_spawn_9", "east_spawn_10"];
@@ -128,6 +133,7 @@ hideSpectator = {
                 /* Set target position */
                 target setDamage 0;
                 target setPos _targetPosition;
+                publicVariable "target";
 
                 /* Set markers */
 
@@ -136,6 +142,7 @@ hideSpectator = {
                 
                 currentHintMarker = _hintMarker;
                 publicVariable "currentHintMarker";
+
                 /* Teleport players */
 
                 {
@@ -204,12 +211,14 @@ hideSpectator = {
                     _x setDamage 0;
                     _x setPos getPos respawn_west;
                     _x call ace_medical_treatment_fnc_fullHealLocal;
+                    [_x, false] call ace_medical_fnc_setUnconscious;
                 } forEach westPlayers;
 
                 {
                     _x setDamage 0;
                     _x setPos getPos respawn_east;
                     _x call ace_medical_treatment_fnc_fullHealLocal;
+                    [_x, false] call ace_medical_fnc_setUnconscious;
                 } forEach eastPlayers;
 
                 sleep 5;
