@@ -14,8 +14,8 @@ hideSpectator = {
 
 // [] spawn {
 //     while {true} do {
-//        waitUntil { isRoundStarted; };
-//        [] call hideSpectator;
+//         ["close"] call HIA3_spectator_fnc_handler;
+//         sleep 1;
 //     };
 // };
 

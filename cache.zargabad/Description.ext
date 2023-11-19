@@ -3,9 +3,13 @@ onLoadName = "Cache Hunt 1.0";
 onLoadMission = "True classic from A2 veterans";
 
 respawn = "BASE";
-onPlayerRespawn = "onPlayerRespawn.sqf";
 respawnOnStart = -1;
+respawnDelay = 0;
 disabledAI = 1;
+corpseLimit = 1;
+
+respawnTemplates[] = { "my_respawn" };
+// onPlayerRespawn = "onPlayerRespawn.sqf";
 
 class Params
 {
@@ -52,5 +56,33 @@ class Params
 
 		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
 		default = 45;
+	};
+};
+
+class CfgRespawnTemplates
+{
+	// class used in respawnTemplates entry
+	class my_respawn
+	{
+		// function or script executed upon death
+		// parameters passed into it are the same as are passed into onPlayerKilled.sqf file
+		onPlayerKilled = "onPlayerKilled.sqf";
+
+		// function or script executed upon respawn
+		// parameters passed into it are the same as are passed into onPlayerRespawn.sqf file
+		onPlayerRespawn = "onPlayerRespawn.sqf";
+
+		// default respawn delay
+		// can be overwitten by description.ext attribute of the same name
+		respawnDelay = 0;
+
+		// see respawnOnStart for description and limitations
+		// can be overridden by description.ext attribute of the same name
+		respawnOnStart = -1;
+	};
+
+	class Spectator
+	{
+		onPlayerRespawn = "BIS_fnc_respawnSpectator"; // a function can be used instead of a script
 	};
 };

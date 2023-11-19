@@ -1,0 +1,33 @@
+if (not local _this) exitwith {};
+
+removeAllWeapons _this;
+removeAllItems _this;
+removeAllAssignedItems _this;
+removeUniform _this;
+removeVest _this;
+removeBackpack _this;
+removeHeadgear _this;
+removeGoggles _this;
+
+_this forceAddUniform 'rhs_uniform_acu_ucp2';
+for '_i' from 1 to 5 do { _this addItemToUniform 'ACE_packingBandage';};
+for '_i' from 1 to 5 do { _this addItemToUniform 'ACE_elasticBandage';};
+for '_i' from 1 to 5 do { _this addItemToUniform 'ACE_fieldDressing';};
+_this addItemToUniform 'ACE_EarPlugs';
+for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_morphine';};
+_this addVest 'rhsusf_spcs_ucp_teamleader';
+for '_i' from 1 to 6 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855A1_PMAG';};
+for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red';};
+for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
+for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_an_m8hc';};
+_this addBackpack 'rhsusf_assault_eagleaiii_ucp';
+_this addItemToBackpack  'rhsusf_m112_mag';
+_this addWeapon 'rhs_weap_m4a1';
+_this addPrimaryWeaponItem 'rhsusf_acc_eotech_552';
+_this addWeapon 'rhs_weap_m72a7';
+_this addHeadgear 'rhsusf_ach_helmet_ucp';
+_this addGoggles 'rhs_googles_black';
+_this linkItem 'ItemMap';
+_this linkItem 'ItemCompass';
+_this linkItem 'ItemGPS';
+_this addWeapon 'Binocular';

@@ -1,5 +1,12 @@
-if (isRoundStarted) then {
-	["Initialize", [player, [], true]] call BIS_fnc_EGSpectator;
+// missionNamespace setVariable ["HIA3_Spectator_Enable", false];
+
+// Re-enable input if player is dead (acebug workaround) - probably not needed anymore
+if (userInputDisabled) then
+{
+   disableUserInput false;
 };
 
-format ["isRoundStarted: %1", isRoundStarted] remoteExec["hint"];
+if (isRoundStarted) then {
+	["Initialize", [player, [], true, true, true, true, true, true, true, true]] call BIS_fnc_EGSpectator;
+};
+
