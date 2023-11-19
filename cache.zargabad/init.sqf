@@ -89,6 +89,16 @@ hideSpectator = {
             deletevehicle target;
             target = "CUP_hromada_beden_dekorativniX" createvehicle getPos target_spawn_1;
         };
+
+        timeoutround = {
+            params ["_timeouttime"];
+
+            while {_timeouttime > 0} do {
+                _timeouttime = _timeouttime - 1;
+                format["Next round begins in: \n %1", [((_timeouttime)/60)+.01, "HH:MM"] call BIS_fnc_timetoString] remoteExec ["hintSilent"];
+                sleep 1;
+            };
+        };
             
         startNewround = {
             [] call createNewCargo;
@@ -160,22 +170,8 @@ hideSpectator = {
                 "Welcome to the Cache Hunt!" remoteExec ["hintSilent"];
                 sleep 5;
                 "Rules are simple:\n\nWest team need to find & destroy weapon cache or eliminate enemy team\n\nEast team need to defend weapon cache or eliminate enemy team" remoteExec ["hintSilent"];
-                sleep 5;
-
-                // TODO: create function for timer instead of hardcode
-                // sleep timeouttime;
-                "Game starting in 10 seconds!" remoteExec ["hintSilent"];
-                sleep 5;
-                "5" remoteExec ["hintSilent"];
-                sleep 1;
-                "4" remoteExec ["hintSilent"];
-                sleep 1;
-                "3" remoteExec ["hintSilent"];
-                sleep 1;
-                "2" remoteExec ["hint"];
-                sleep 1;
-                "1" remoteExec ["hint"];
-                sleep 1;
+                sleep 15;
+                [60] call timeoutround;
             };
             
             displayWins = {
@@ -183,15 +179,7 @@ hideSpectator = {
                 sleep 5;
             };
             
-            timeoutround = {
-                _timeouttime = timeouttime;
-
-                while {_timeouttime > 0} do {
-                    _timeouttime = _timeouttime - 1;
-                    format["Next round begins in: \n %1", [((_timeouttime)/60)+.01, "HH:MM"] call BIS_fnc_timetoString] remoteExec ["hintSilent"];
-                    sleep 1;
-                };
-            };
+            
             
             checkWinside = {
                 isRoundStarted = false;
@@ -235,7 +223,7 @@ hideSpectator = {
                 [] call startNewround;
                 [] call checkWinside;
                 [] call displayWins;
-                [] call timeoutround;
+                [timeouttime] call timeoutround;
                 currentRound = currentRound + 1;
             };
             

@@ -26,4 +26,5 @@ _this addHeadgear 'rhs_6b7_1m_ess';
 _this linkItem 'ItemMap';
 _this linkItem 'ItemGPS';
 _this linkItem 'ItemCompass';
+_this linkItem 'tf_fadak';
 _this addWeapon 'Binocular';

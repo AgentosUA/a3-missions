@@ -30,4 +30,5 @@ _this addGoggles 'rhs_googles_black';
 _this linkItem 'ItemMap';
 _this linkItem 'ItemCompass';
 _this linkItem 'ItemGPS';
+_this linkItem 'tf_anprc152';
 _this addWeapon 'Binocular';
