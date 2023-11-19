@@ -1,11 +1,9 @@
-if (side player == west) then {
-	player setPos getPos respawn_west;
+params [["_newUnit", "_oldUnit"]];
+
+if (side group _newUnit == west ) then {
+	_newUnit setPos getPos respawn_west;
 };
 
-if (side player == east) then {
-	player setPos getPos respawn_east;
-};
-
-if (isRoundStarted) then {
-    ["initialize", [player, [], true]] call BIS_fnc_EGSpectator;
+if (side group _newUnit == east) then {
+	_newUnit setPos getPos respawn_east;
 };

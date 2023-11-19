@@ -2,6 +2,11 @@ author = "Agentos";
 onLoadName = "Cache Hunt 1.0";
 onLoadMission = "True classic from A2 veterans";
 
+respawn = "BASE";
+onPlayerRespawn = "onPlayerRespawn.sqf";
+respawnOnStart = -1;
+disabledAI = 1;
+
 class Params
 {
 	class TotalRounds { 

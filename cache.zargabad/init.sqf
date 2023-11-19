@@ -1,20 +1,32 @@
 TF_defaultwestbackpack = "rhs_sidor";
 TF_defaulteastbackpack = "rhs_sidor";
 
+hideSpectator = {
+    ["Terminate"] remoteExecCall ["BIS_fnc_EGSpectator"];
+};
+
 [] spawn {
     while {true} do {
        waitUntil {inputAction "Eject" > 0 || inputAction "ingamePause" > 0};
-       ["Terminate"] call BIS_fnc_EGSpectator;
+       [] call hideSpectator;
     };
 };
+
+// [] spawn {
+//     while {true} do {
+//        waitUntil { isRoundStarted; };
+//        [] call hideSpectator;
+//     };
+// };
 
 [] spawn {
     if (isServer) then {
         totalrounds = ["TotalRounds"] call BIS_fnc_getParamValue;
         roundtime = ["RoundTime"] call BIS_fnc_getParamValue;
         timeouttime = ["PrepareTime"] call BIS_fnc_getParamValue;
-            
         isRoundStarted = false;
+        publicVariable "isRoundStarted";
+
         isBlueAlive = true;
         isRedAlive = true;
         blueWins = 0;
@@ -34,38 +46,45 @@ TF_defaulteastbackpack = "rhs_sidor";
             } forEach allMapMarkers;
         };
 
+        hideCorps = {
+            {
+                deleteVehicle _x;
+                sleep 0.01;
+            } forEach allDeadMen;
+        };
+
+        getWestPlayers = {
+            allunits select {
+                side group _x == west;
+            };
+        };
+
+        getEastPlayers = {
+            allunits select {
+                side group _x == east;
+            };
+        };
+
         [] call hideAllMarkers;
 
         waitUntil {
             sleep 1;
-            westPlayers = allunits select {
-                side _x == west
-            };
-
-            eastPlayers = allunits select {
-                side _x == east
-            };
-
+            westPlayers = [] call getWestPlayers;
+            eastPlayers = [] call getEastPlayers;
             "Waiting for players..." remoteExec ["hint"];
-
             count westPlayers > 0 && count eastPlayers > 0;
         };
 
-        westPlayers = allunits select {
-            side _x == west
-        };
+        westPlayers = [] call getWestPlayers;
+        eastPlayers = [] call getEastPlayers;
 
-        eastPlayers = allunits select {
-            side _x == east
-        };
-
-        if (side player == east) then {
+        if (side group player == east) then {
             {
                 deleteMarkerLocal _x;
             } forEach hintMarkers;
         };
 
-        if (side player == west) then {
+        if (side group player == west) then {
             {
                 deleteMarkerLocal "target_marker";
             } forEach hintMarkers;
@@ -115,31 +134,29 @@ TF_defaulteastbackpack = "rhs_sidor";
 
                 /* Teleport players */
 
-                westPlayers = allunits select {
-                  side _x == west
-                };
-
-                eastPlayers = allunits select {
-                    side _x == east
-                };
+                westPlayers = [] call getWestPlayers;
+                eastPlayers = [] call getEastPlayers;
 
                 {
                     _x setDamage 0;
                     _x setPos _westPosition;
-                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
                 } forEach westPlayers;
 
                 {
                     _x setDamage 0;
                     _x setPos _eastPosition;
-                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
                 } forEach eastPlayers;
+
+                [] call hideSpectator;
                 
                 /* Activate check for alive players in base trigger */
 
+                isRoundStarted = true;
+                publicVariable "isRoundStarted";
+
                 /* Start round timer */
-                // && isBlueAlive && isRedAlive &&
-                while {_time > 0 && alive target} do {
+
+                while {_time > 0 && alive target && isBlueAlive} do {
                     _time = _time - 1;
                     format["Round time left: \n %1", [((_time)/60)+.01, "HH:MM"] call BIS_fnc_timetoString] remoteExec ["hintSilent"];
     
@@ -176,24 +193,8 @@ TF_defaulteastbackpack = "rhs_sidor";
             };
             
             timeoutround = {
-                westPlayers = allunits select {
-                  side _x == west
-                };
-
-                eastPlayers = allunits select {
-                    side _x == east
-                };
-
-                {
-                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
-                } forEach westPlayers;
-
-                {
-                    ["Terminate", [_x]] call BIS_fnc_EGSpectator;
-                } forEach eastPlayers;
-
-
                 _timeouttime = timeouttime;
+
                 while {_timeouttime > 0} do {
                     _timeouttime = _timeouttime - 1;
                     format["Next round begins in: \n %1", [((_timeouttime)/60)+.01, "HH:MM"] call BIS_fnc_timetoString] remoteExec ["hintSilent"];
@@ -203,7 +204,10 @@ TF_defaulteastbackpack = "rhs_sidor";
             
             checkWinside = {
                 isRoundStarted = false;
+                publicVariable "isRoundStarted";
                 [] call hideAllMarkers;
+                [] call hideCorps;
+                [] call hideSpectator;
 
                 if (!alive target) then {
                     blueWins = blueWins + 1;
@@ -213,9 +217,10 @@ TF_defaulteastbackpack = "rhs_sidor";
                     "East wins!" remoteExec ["hint"];
                 };
 
-                sleep 1;
-
                 /* Teleport players to bases */
+                westPlayers = [] call getWestPlayers;
+                eastPlayers = [] call getEastPlayers;
+
                 {
                     _x setDamage 0;
                     _x setPos getPos respawn_west;
