@@ -81,8 +81,9 @@ class CfgRespawnTemplates
 		respawnOnStart = -1;
 	};
 
-	class Spectator
-	{
-		onPlayerRespawn = "BIS_fnc_respawnSpectator"; // a function can be used instead of a script
-	};
+	// class Spectator
+	// {
+	// 	// onPlayerRespawn = "BIS_fnc_respawnSpectator"; // a function can be used instead of a script
+	// 	onPlayerRespawn = "onPlayerRespawn.sqf";
+	// };
 };
