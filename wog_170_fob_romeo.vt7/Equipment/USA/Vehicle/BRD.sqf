@@ -8,6 +8,9 @@ _this RemoveMagazineTurret ["rhs_mag_1100Rnd_762x51_M240",[0]];
 _this AddMagazineTurret ["rhs_mag_230Rnd_25mm_M242_HEI", [0]];
 _this AddMagazineTurret ["rhs_mag_2Rnd_TOW2A", [0]];
 
+{_this addMagazineTurret ["rhs_mag_TOW2a",[0]]} forEach [1,2];
+_this addMagazineCargoGlobal ["ace_csw_rhs_mag_TOW2A",1];
+
 _this addItemCargoGlobal ["ToolKit",1];
 _this addItemCargoGlobal  ["WOG_TowRope_15m",1];
 _this addItemCargoGlobal  ["ACE_EntrenchingTool",2];

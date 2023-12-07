@@ -9,9 +9,9 @@ removeBackpack _this;
 removeHeadgear _this;
 removeGoggles _this;
 
-_this addWeapon 'hlc_wp_m16A1';
-_this addPrimaryWeaponItem 'hlc_muzzle_556NATO_M42000';
-_this addPrimaryWeaponItem 'rhs_mag_30Rnd_556x45_M855_Stanag';
+_this addWeapon 'hlc_rifle_M14';
+_this addPrimaryWeaponItem 'hlc_optic_LRT_m14';
+_this addPrimaryWeaponItem 'rhsusf_20Rnd_762x51_m993_Mag';
 
 _Uniform = ['usm_bdu_wdl', 'usm_bdu_srl_wdl', 'usm_bdu_srh_wdl'] call BIS_fnc_selectRandom;
 _this forceAddUniform _Uniform; 
@@ -28,11 +28,10 @@ for '_i' from 1 to 3 do { _this addItemToUniform 'ACE_packingBandage';};
 
 _Vest = ['usm_vest_pasgt_lbe_rm', 'usm_vest_pasgt_lbe_rm2'] call BIS_fnc_selectRandom;
 _this addVest _Vest; 
-for '_i' from 1 to 6 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855_Stanag';};
-for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red';};
+for '_i' from 1 to 6 do { _this addItemToVest 'rhsusf_20Rnd_762x51_m993_Mag';};
+for '_i' from 1 to 2 do { _this addItemToVest 'rhsusf_20Rnd_762x51_m62_Mag';};
 for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
 for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShell';};
-for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShellGreen';};
 
 _this addBackpack 'usm_pack_st138_prc77';
 
