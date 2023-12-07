@@ -21,8 +21,8 @@ _this addMagazineCargoGlobal ["rhs_mag_M441_HE",8];
 _this addMagazineCargoGlobal ["rhs_mag_M433_HEDP",8];
 _this addMagazineCargoGlobal ["rhs_mag_30Rnd_556x45_M855_Stanag",24];
 _this addMagazineCargoGlobal ["rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red",16];
-_this addMagazineCargoGlobal ["rhsusf_200rnd_556x45_M855_box",4];
-_this addMagazineCargoGlobal ["rhsusf_200rnd_556x45_M855_mixed_box",4];
+_this addMagazineCargoGlobal ["rhsusf_100Rnd_762x51_m61_ap",4];
+_this addMagazineCargoGlobal ["rhsusf_100Rnd_762x51_m62_tracer",4];
 _this addMagazineCargoGlobal ["rhs_200rnd_556x45_T_SAW",4];
 _this addMagazineCargoGlobal ["ace_csw_rhs_mag_TOW2",4];
 
