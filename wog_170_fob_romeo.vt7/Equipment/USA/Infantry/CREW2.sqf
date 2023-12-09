@@ -27,7 +27,7 @@ _this addVest 'usm_vest_lbe_rm2';
 for '_i' from 1 to 4 do { _this addItemToVest 'rhsgref_30rnd_1143x23_M1911B_SMG';};
 for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
 for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShell';};
-for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShellGreen';};
+
 
 _Headgear = ['rhsusf_cvc_green_helmet', 'rhsusf_cvc_green_alt_helmet', 'rhsusf_cvc_green_ess'] call BIS_fnc_selectRandom;
 _this addHeadgear _Headgear;

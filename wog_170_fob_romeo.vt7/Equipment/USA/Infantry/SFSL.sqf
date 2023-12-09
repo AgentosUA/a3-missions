@@ -32,7 +32,7 @@ for '_i' from 1 to 6 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855_Stanag'
 for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red';};
 for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
 for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShell';};
-for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShellGreen';};
+
 
 _this addBackpack 'usm_pack_st138_prc77';
 

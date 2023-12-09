@@ -9,7 +9,7 @@ removeBackpack _this;
 removeHeadgear _this;
 removeGoggles _this;
 
-_this addWeapon 'rhs_weap_m249_pip';
+_this addWeapon 'hlc_lmg_m60';
 _this addPrimaryWeaponItem 'rhsusf_acc_saw_bipod';
 _this addPrimaryWeaponItem 'rhsusf_100Rnd_762x51_m61_ap';
 
@@ -29,14 +29,14 @@ _this addItemToVest 'rhsusf_100Rnd_762x51_m61_ap';
 _this addItemToVest 'rhsusf_100Rnd_762x51_m62_tracer';
 for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
 for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShell';};
-for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShellGreen';};
 
 _this addBackpack 'usm_pack_alice';
 _this addItemToBackpack  'rhsusf_100Rnd_762x51_m61_ap';
+_this addItemToBackpack  'rhsusf_100Rnd_762x51_m61_ap';
 _this addItemToBackpack  'rhsusf_100Rnd_762x51_m62_tracer';
-_this addItemToBackpack  'rhs_200rnd_556x45_T_SAW';
 
-_this addHeadgear 'usm_bdu_boonie_wdl';
+_Headgear = ['usm_helmet_pasgt_ce_wdl', 'usm_helmet_pasgt_ceswd_wdl', 'usm_helmet_pasgt_rm_wdl', 'usm_helmet_pasgt_rms_wdl'] call BIS_fnc_selectRandom;
+_this addHeadgear _Headgear;
 _this linkItem 'ItemMap';
 _this linkItem 'ItemCompass';
 _this linkItem 'ItemWatch';
