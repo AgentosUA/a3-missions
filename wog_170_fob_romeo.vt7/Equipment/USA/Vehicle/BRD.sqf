@@ -24,6 +24,6 @@ _this addMagazineCargoGlobal ["rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red",16];
 _this addMagazineCargoGlobal ["rhsusf_100Rnd_762x51_m61_ap",4];
 _this addMagazineCargoGlobal ["rhsusf_100Rnd_762x51_m62_tracer",4];
 _this addMagazineCargoGlobal ["rhs_200rnd_556x45_T_SAW",4];
-_this addMagazineCargoGlobal ["ace_csw_rhs_mag_TOW2",4];
+_this addMagazineCargoGlobal ["ace_csw_rhs_mag_TOW2",2];
 
 _this addBackpackCargoGlobal  ["usm_pack_m5_rifleman",2];

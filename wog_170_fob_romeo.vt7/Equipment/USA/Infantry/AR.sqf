@@ -10,7 +10,6 @@ removeHeadgear _this;
 removeGoggles _this;
 
 _this addWeapon 'hlc_lmg_m60';
-_this addPrimaryWeaponItem 'rhsusf_acc_saw_bipod';
 _this addPrimaryWeaponItem 'rhsusf_100Rnd_762x51_m61_ap';
 
 _Uniform = ['usm_bdu_wdl', 'usm_bdu_srl_wdl', 'usm_bdu_srh_wdl'] call BIS_fnc_selectRandom;
