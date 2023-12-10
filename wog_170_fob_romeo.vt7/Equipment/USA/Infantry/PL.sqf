@@ -9,41 +9,20 @@ removeBackpack _this;
 removeHeadgear _this;
 removeGoggles _this;
 
-_this addWeapon 'hlc_wp_m16A1';
-_this addPrimaryWeaponItem 'rhs_mag_30Rnd_556x45_M855_Stanag';
+_this forceAddUniform 'usm_bdu_bti_odg';
+_this addItemToUniform 'rhsusf_ANPVS_14';
+_this addItemToUniform 'ACE_EarPlugs';
+_this addVest 'usm_vest_pasgt_odg';
+
+for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
+for '_i' from 1 to 4 do { _this addItemToUniform 'rhsusf_mag_7x45acp_MHP';};
 
 _this addWeapon 'rhsusf_weap_m1911a1';
-_this addHandgunItem 'rhsusf_mag_7x45acp_MHP';
-
-_Uniform = ['usm_bdu_wdl', 'usm_bdu_srl_wdl', 'usm_bdu_srh_wdl'] call BIS_fnc_selectRandom;
-_this forceAddUniform _Uniform; 
-_this addItemToUniform 'ACE_EarPlugs';
-_this addItemToUniform 'ACE_MapTools';
-for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_epinephrine';};
-for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_morphine';};
-for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_tourniquet';};
-for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_splint';};
-for '_i' from 1 to 3 do { _this addItemToUniform 'ACE_quikclot';};
-for '_i' from 1 to 3 do { _this addItemToUniform 'ACE_fieldDressing';};
-for '_i' from 1 to 3 do { _this addItemToUniform 'ACE_elasticBandage';};
-for '_i' from 1 to 3 do { _this addItemToUniform 'ACE_packingBandage';};
-for '_i' from 1 to 2 do { _this addItemToUniform 'rhsusf_mag_7x45acp_MHP';};
-
-_this addVest 'usm_vest_pasgt_lbe_rmpr';
-_this addItemToVest 'usm_bdu_8point_wdl';
-for '_i' from 1 to 6 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855_Stanag';};
-for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red';};
-for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
-for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShell';};
-
-
-_this addBackpack 'usm_pack_st138_prc77';
-
-_Headgear = ['usm_helmet_pasgt_ce_wdl', 'usm_helmet_pasgt_ceswd_wdl', 'usm_helmet_pasgt_rm_wdl', 'usm_helmet_pasgt_rms_wdl'] call BIS_fnc_selectRandom;
-_this addHeadgear _Headgear;
+_this addHeadgear 'H_Cap_headphones';
+_this addGoggles 'G_Aviator';
 _this linkItem 'ItemMap';
 _this linkItem 'ItemCompass';
 _this linkItem 'ItemWatch';
-_this linkItem 'ItemRadio';
+_this linkItem 'tf_anprc152';
 _this linkItem 'ItemGPS';
 _this addWeapon 'Binocular';

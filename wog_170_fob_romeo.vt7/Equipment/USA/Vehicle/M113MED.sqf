@@ -15,4 +15,6 @@ _this addItemCargoGlobal  ["ACE_salineIV_500",10];
 _this addItemCargoGlobal  ["ACE_personalAidKit",10];
 _this addItemCargoGlobal  ["ACE_surgicalKit",2];
 
+_this addItemCargoGlobal  ["WOG_TowRope_15m",1];
+
 _this addBackpackCargoGlobal ["usm_pack_m5_medic",2];

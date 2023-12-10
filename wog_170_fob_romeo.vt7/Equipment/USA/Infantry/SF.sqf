@@ -34,8 +34,6 @@ for '_i' from 1 to 2 do { _this addItemToVest 'rhs_mag_m67';};
 for '_i' from 1 to 2 do { _this addItemToVest 'SmokeShell';};
 
 
-_this addBackpack 'usm_pack_st138_prc77';
-
 _Headgear = 'usm_bdu_boonie_wdl';
 _this addHeadgear _Headgear;
 _this linkItem 'ItemMap';
