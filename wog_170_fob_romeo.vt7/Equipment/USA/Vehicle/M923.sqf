@@ -3,6 +3,7 @@ if (not local _this) exitwith {};
 _this addItemCargoGlobal  ["WOG_TowRope_15m",1];
 _this addItemCargoGlobal  ["ACE_EntrenchingTool",2];
 
+_this addWeaponCargoGlobal ["CUP_launch_M72A2", 2];
 _this addMagazineCargoGlobal ["rhs_mag_m67",16];
 _this addMagazineCargoGlobal ["rhs_mag_an_m8hc",16];
 _this addMagazineCargoGlobal ["rhs_mag_M441_HE",16];

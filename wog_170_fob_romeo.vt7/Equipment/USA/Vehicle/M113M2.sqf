@@ -4,6 +4,7 @@ _this addItemCargoGlobal  ["ToolKit",1];
 _this addItemCargoGlobal  ["WOG_TowRope_15m",1];
 _this addItemCargoGlobal  ["ACE_EntrenchingTool",2];
 
+_this addWeaponCargoGlobal ["CUP_launch_M72A2", 2];
 _this addMagazineCargoGlobal ["rhs_mag_m67",8];
 _this addMagazineCargoGlobal ["rhs_mag_an_m8hc",8];
 _this addMagazineCargoGlobal ["rhs_mag_30Rnd_556x45_M855_Stanag",16];

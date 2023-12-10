@@ -9,6 +9,8 @@ _this AddMagazineTurret ["rhs_mag_230Rnd_25mm_M242_HEI", [0]];
 _this AddMagazineTurret ["rhs_mag_2Rnd_TOW2A", [0]];
 _this addMagazineCargoGlobal ["ace_csw_rhs_mag_TOW2",2];
 
+_this addWeaponCargoGlobal ["CUP_launch_M72A2", 2];
+
 _this addItemCargoGlobal ["ToolKit",1];
 _this addItemCargoGlobal  ["WOG_TowRope_15m",1];
 _this addItemCargoGlobal  ["ACE_EntrenchingTool",2];
