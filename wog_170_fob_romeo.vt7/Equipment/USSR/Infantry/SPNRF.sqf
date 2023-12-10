@@ -10,7 +10,7 @@ removeHeadgear _this;
 removeGoggles _this;
 
 _this addWeapon 'rhs_weap_aks74';
-_this addPrimaryWeaponItem 'rhs_acc_dtk1983';
+_this addPrimaryWeaponItem 'hlc_muzzle_545SUP_AK';
 _this addPrimaryWeaponItem 'rhs_30Rnd_545x39_7N6M_AK';
 
 _Uniform = ['Spec_Gorka2_olive_EAST_Uniform', 'Spec_Gorka2_olive_sh_EAST_Uniform'] call BIS_fnc_selectRandom;

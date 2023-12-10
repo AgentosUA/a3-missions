@@ -28,11 +28,8 @@ for '_i' from 1 to 3 do { _this addItemToUniform 'ACE_packingBandage';};
 
 _Backpack = ['YuE_RD54SVDF', 'YuE_RD54SVDFull'] call BIS_fnc_selectRandom;
 _this addBackpack _Backpack; 
-_this addItemToBackpack  'rhs_weap_vss';
-_this addItemToBackpack  'rhs_acc_pso1m21';
 for '_i' from 1 to 8 do { _this addItemToBackpack  'rhs_10Rnd_762x54mmR_7N14';};
 for '_i' from 1 to 2 do { _this addItemToBackpack  'rhs_10Rnd_762x54mmR_T_46';};
-for '_i' from 1 to 6 do { _this addItemToBackpack  'rhs_10rnd_9x39mm_SP5';};
 for '_i' from 1 to 2 do { _this addItemToBackpack  'rhs_mag_rgn';};
 for '_i' from 1 to 2 do { _this addItemToBackpack  'rhs_mag_rgo';};
 for '_i' from 1 to 2 do { _this addItemToBackpack  'rhs_mag_rdg2_white';};

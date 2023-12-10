@@ -1,7 +1,5 @@
 if (not local _this) exitwith {};
 
-{_this lockCargo [_x, true];} foreach [5,7,8,9,10];
-
 _this addItemCargoGlobal  ["ToolKit",1];
 _this addItemCargoGlobal  ["WOG_TowRope_15m",1];
 _this addItemCargoGlobal  ["ACE_EntrenchingTool",2];

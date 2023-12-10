@@ -1,12 +1,5 @@
 if (not local _this) exitwith {};
 
-_this addMagazineTurret ["wog_2000Rnd_762x54mmR",[0]];
-_this addMagazineTurret ["wog_mag_pg15v_40",[0],20];
-_this addMagazineTurret ["wog_mag_og15v_40",[0],20];
-_this addMagazineTurret ["rhs_mag_9m14m",[0]];
-_this addMagazineCargoGlobal ["wog_csw_mag_9m14m",4];
-
-_this addItemCargoGlobal  ["ToolKit",1];
 _this addItemCargoGlobal  ["WOG_TowRope_15m",1];
 _this addItemCargoGlobal  ["ACE_EntrenchingTool",2];
 
@@ -19,5 +12,7 @@ _this addMagazineCargoGlobal ["rhs_45Rnd_545X39_7N6_AK",6];
 _this addMagazineCargoGlobal ["rhs_45Rnd_545X39_AK_Green",4];
 _this addMagazineCargoGlobal ["rhs_10Rnd_762x54mmR_7N1",6];
 _this addMagazineCargoGlobal ["rhs_10Rnd_762x54mmR_T_46",4];
+_this addMagazineCargoGlobal ["rhs_100Rnd_762x54mmR",17];
 
 _this addBackpackCargoGlobal ["rhs_sidor",2];
+_this addBackpackCargoGlobal ["rhsgref_ttsko_alicepack",1];
