@@ -3,6 +3,21 @@ wog3_no_auto_long_range_radio = true;
 [] call WMT_fnc_BriefingMap;
 [] execVM "briefing.sqf";
 
+/* Remove reserve vehicle in case SL not exists */
+
+if (isServer) then {
+    [] spawn {
+        if (isNil "us_reserve_1") then {
+            deleteVehicle remove_unassign_1;
+        };
+
+        if (isNil "ru_reserve_1") then {
+            deleteVehicle remove_unassign_2;
+        };
+    };
+};
+
+
 waitUntil {sleep 5; WMT_pub_frzState >= 3};
 [
 
