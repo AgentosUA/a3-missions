@@ -1,5 +1,6 @@
 if (not local _this) exitwith {};
 
+_this addItemCargoGlobal  ["ToolKit",1];
 _this addItemCargoGlobal  ["ACE_adenosine",10];
 _this addItemCargoGlobal  ["ACE_epinephrine",15];
 _this addItemCargoGlobal  ["ACE_morphine",15];

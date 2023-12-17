@@ -17,6 +17,7 @@ _Uniform = ['usm_bdu_wdl', 'usm_bdu_srl_wdl', 'usm_bdu_srh_wdl'] call BIS_fnc_se
 _this forceAddUniform _Uniform; 
 _this addItemToUniform 'ACE_EarPlugs';
 _this addItemToUniform 'ACE_MapTools';
+_this addItemToUniform 'ACE_RangeCard';
 for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_epinephrine';};
 for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_morphine';};
 for '_i' from 1 to 2 do { _this addItemToUniform 'ACE_tourniquet';};
