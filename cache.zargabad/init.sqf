@@ -1,10 +1,69 @@
 TF_defaultwestbackpack = "rhs_sidor";
 TF_defaulteastbackpack = "rhs_sidor";
+wog3_no_auto_long_range_radio = true;
 currentHintMarker = "wmt_west_hint_1";
 targetMarker = "target_marker";
 
 hideSpectator = {
     ["Terminate"] remoteExecCall ["BIS_fnc_EGSpectator"];
+};
+
+saveLoadout = {
+    player setVariable ["saved_loadout", getUnitloadout player];
+};
+
+loadSavedLoadout = {
+  player setUnitLoadout(player getVariable["saved_loadout",[]]);
+};
+
+[] spawn {
+    waitUntil { not isNull player };
+    /* Spectator */
+
+    bluefor_flag addAction ["Spectate",{[] call BIS_fnc_respawnSpectator;},nil,6,true,true,"",""];
+    opfor_flag addAction ["Spectate",{[] call BIS_fnc_respawnSpectator;},nil,6,true,true,"",""];
+
+    /* Stamina */
+
+    if (0 == ["Stamina"] call BIS_fnc_getParamValue) then {
+        player enableFatigue false;
+        player addEventhandler ["Respawn", {player enableFatigue false}];
+    };
+
+    /* Virtual arsenal */
+
+    if (0 == ["ArsenalSettings"] call BIS_fnc_getParamValue || 3 == ["ArsenalSettings"] call BIS_fnc_getParamValue) then {
+        // bluefor_arsenal addAction ["Open Virtual Arsenal", {["Open",true] spawn BIS_fnc_arsenal}]; 
+        // opfor_arsenal addAction ["Open Virtual Arsenal", {["Open",true] spawn BIS_fnc_arsenal}];
+    };
+
+    /* Loadout */
+
+    if (0 == ["ArsenalSettings"] call BIS_fnc_getParamValue || 1 == ["ArsenalSettings"] call BIS_fnc_getParamValue) then {
+        /* BLUEFOR GEAR PRESETS */
+    
+        bluefor_arsenal addAction ["Squad Leader", "gear\bluefor\loadout.sqf", [0], 6, false, true, "", ""];
+
+        bluefor_arsenal addAction ["Automatic Rifleman", "gear\bluefor\loadout.sqf", [1], 6, false, true, "", ""];
+
+        bluefor_arsenal addAction ["Rifleman", "gear\bluefor\loadout.sqf", [2], 6, false, true, "", ""];
+
+        bluefor_arsenal addAction ["Medic", "gear\bluefor\loadout.sqf", [3], 6, false, true, "", ""];
+
+        bluefor_arsenal addAction ["Marksman", "gear\bluefor\loadout.sqf", [4], 6, false, true, "", ""];
+
+        /* OPFOR GEAR PRESETS */
+
+        opfor_arsenal addAction ["Squad Leader", "gear\opfor\loadout.sqf", [0], 6, false, true, "", ""];
+
+        opfor_arsenal addAction ["Automatic Rifleman", "gear\opfor\loadout.sqf", [1], 6, false, true, "", ""];
+
+        opfor_arsenal addAction ["Rifleman", "gear\opfor\loadout.sqf", [2], 6, false, true, "", ""];
+
+        opfor_arsenal addAction ["Medic", "gear\opfor\loadout.sqf", [3], 6, false, true, "", ""];
+
+        opfor_arsenal addAction ["Marksman", "gear\opfor\loadout.sqf", [4], 6, false, true, "", ""];
+    };
 };
 
 [] spawn {
@@ -106,6 +165,7 @@ hideSpectator = {
         };
             
         startNewround = {
+            [] call saveLoadout;
             [] call createNewCargo;
             _time = roundtime;
             isBlueAlive = true;
@@ -142,6 +202,10 @@ hideSpectator = {
                 
                 currentHintMarker = _hintMarker;
                 publicVariable "currentHintMarker";
+
+                /* Load saved loadout */
+
+                [] call loadSavedLoadout;
 
                 /* Teleport players */
 
@@ -185,8 +249,6 @@ hideSpectator = {
                 format["West: %1 \nEast: %2", blueWins, redWins] remoteExec ["hintSilent"];
                 sleep 5;
             };
-            
-            
             
             checkWinside = {
                 isRoundStarted = false;
