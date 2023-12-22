@@ -59,6 +59,10 @@ if (isServer) then {
 
 if (isServer) then {
     [] spawn {
+        waitUntil {
+            WMT_pub_frzState > 2;
+        };
+
         sleep 900; // 15 min
         
         while {true} do {
@@ -67,9 +71,14 @@ if (isServer) then {
             _theta2 = (random 720) - 360;
             _scud1 = getPosATL scud_1;
             _scud2 = getPosATL scud_2;
+            
+            if (alive scud_1) then {
+                "scud_1" setMarkerPos [(_scud1 select 0) + _r * cos _theta1, (_scud1 select 1) + _r * sin _theta1];
+            };
 
-            "scud_1" setMarkerPos [(_scud1 select 0) + _r * cos _theta1, (_scud1 select 1) + _r * sin _theta1];
-            "scud_2" setMarkerPos [(_scud1 select 0) + _r * cos _theta2, (_scud2 select 1) + _r * sin _theta2];
+            if (alive scud_2) then {
+                "scud_2" setMarkerPos [(_scud1 select 0) + _r * cos _theta2, (_scud2 select 1) + _r * sin _theta2];
+            };
             
             sleep 180;
             
