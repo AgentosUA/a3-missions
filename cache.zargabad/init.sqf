@@ -215,11 +215,13 @@ loadSavedLoadout = {
                 {
                     _x setDamage 0;
                     _x setPos _westPosition;
+                    [_x, false] call ace_medical_fnc_setUnconscious;
                 } forEach westPlayers;
 
                 {
                     _x setDamage 0;
                     _x setPos _eastPosition;
+                    _x call ace_medical_treatment_fnc_fullHealLocal;
                 } forEach eastPlayers;
 
                 [] call hideSpectator;
