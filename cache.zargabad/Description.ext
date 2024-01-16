@@ -5,7 +5,7 @@ onLoadMission = "True classic from A2 veterans";
 respawn = "BASE";
 respawnOnStart = -1;
 respawnDelay = 0;
-// disabledAI = 1;
+disabledAI = 1;
 corpseLimit = 1;
 
 respawnTemplates[] = { "my_respawn" };
