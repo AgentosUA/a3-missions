@@ -96,6 +96,8 @@ loadSavedLoadout = {
         totalrounds = ["TotalRounds"] call BIS_fnc_getParamValue;
         roundtime = ["RoundTime"] call BIS_fnc_getParamValue;
         timeouttime = ["PrepareTime"] call BIS_fnc_getParamValue;
+        roundConditionType = ["RoundConditionEnd"] call BIS_fnc_getParamValue;
+
         isRoundStarted = false;
         publicVariable "isRoundStarted";
 
@@ -170,6 +172,7 @@ loadSavedLoadout = {
             _time = roundtime;
             isBlueAlive = true;
             isRedAlive = true;
+
             _entitites = [
                 [targetSpawns select 0, westSpawns select 0, eastSpawns select 0, hintMarkers select 0],
                 [targetSpawns select 1, westSpawns select 1, eastSpawns select 1, hintMarkers select 1],
@@ -228,8 +231,24 @@ loadSavedLoadout = {
 
                 /* Start round timer */
 
-                while {_time > 0 && alive target && isBlueAlive} do {
+                while {_time > 0 && isRoundStarted} do {
                     _time = _time - 1;
+                    _blueAliveCount = {alive _x && _x inArea zone} count westPlayers;
+                    _eastAliveCount = {alive _x && _x inArea zone} count eastPlayers;
+
+                    if (_blueAliveCount == 0) then {
+                        isBlueAlive = false;
+                    };
+
+                    if (_eastAliveCount == 0) then {
+                        isRedAlive = false;
+                    };
+
+                    if (!isBlueAlive || (roundConditionType == 1 && (!alive target || !isRedAlive)) || (roundConditionType == 2 && !alive target)) then {
+                        isRoundStarted = false;
+                    };
+
+                    // format["%1, %2", _blueAliveCount, westPlayers] remoteExec ["hintSilent"];
                     format["Round time left: \n %1", [((_time)/60)+.01, "HH:MM"] call BIS_fnc_timetoString] remoteExec ["hintSilent"];
     
                     sleep 1;
@@ -242,7 +261,7 @@ loadSavedLoadout = {
                 sleep 5;
                 "Rules are simple:\n\nWest team need to find & destroy weapon cache or eliminate enemy team\n\nEast team need to defend weapon cache or eliminate enemy team" remoteExec ["hintSilent"];
                 sleep 15;
-                [60] call timeoutround;
+                [timeouttime] call timeoutround;
             };
             
             displayWins = {
@@ -257,7 +276,7 @@ loadSavedLoadout = {
                 [] call hideCorps;
                 [] call hideSpectator;
 
-                if (!alive target) then {
+                if (!alive target || (roundConditionType == 1 && !isRedAlive)) then {
                     blueWins = blueWins + 1;
                     "West wins!" remoteExec ["hint"];
                 } else {

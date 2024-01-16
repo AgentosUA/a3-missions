@@ -5,7 +5,7 @@ onLoadMission = "True classic from A2 veterans";
 respawn = "BASE";
 respawnOnStart = -1;
 respawnDelay = 0;
-disabledAI = 1;
+// disabledAI = 1;
 corpseLimit = 1;
 
 respawnTemplates[] = { "my_respawn" };
@@ -56,6 +56,21 @@ class Params
 
 		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
 		default = 45;
+	};
+
+	class RoundConditionEnd { 
+		// Visible name in lobby settings list
+		title = "Round condition end";
+
+		// must be integers - commas e.g 1.5 are not allowed
+		values[] = { 1, 2 };
+
+		// Description of each selectable item - must have the same number of items as 'values'
+		// If texts are missing, the values will be displayed instead
+		texts[] = { "Kill OR destroy", "Destroy only" };
+
+		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
+		default = 1;
 	};
 
 	class ArsenalSettings { 
