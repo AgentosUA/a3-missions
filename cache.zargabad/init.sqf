@@ -17,18 +17,24 @@ loadSavedLoadout = {
 };
 
 [] spawn {
+    /* Stamina */
+
+    if (0 == ["Stamina"] call BIS_fnc_getParamValue) then {
+        player enableFatigue false;
+
+       while {!(isNull player)} do {
+            player setFatigue 0;
+            sleep 5;
+        };
+    };
+};
+
+[] spawn {
     waitUntil { not isNull player };
     /* Spectator */
 
     bluefor_flag addAction ["Spectate",{[] call BIS_fnc_respawnSpectator;},nil,6,true,true,"",""];
     opfor_flag addAction ["Spectate",{[] call BIS_fnc_respawnSpectator;},nil,6,true,true,"",""];
-
-    /* Stamina */
-
-    if (0 == ["Stamina"] call BIS_fnc_getParamValue) then {
-        player enableFatigue false;
-        player addEventhandler ["Respawn", {player enableFatigue false}];
-    };
 
     /* Virtual arsenal */
 
