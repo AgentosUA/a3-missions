@@ -237,6 +237,9 @@ loadSavedLoadout = {
                 isRoundStarted = true;
                 publicVariable "isRoundStarted";
 
+                "Round started..." remoteExec ["hintSilent"];
+                sleep 5;
+
                 /* Start round timer */
 
                 while {_time > 0 && isRoundStarted} do {
@@ -256,10 +259,11 @@ loadSavedLoadout = {
                         isRoundStarted = false;
                     };
 
+                    // format["%1, %2, %3, %4", _blueAliveCount, westPlayers, _eastAliveCount, eastPlayers] remoteExec ["hintSilent"];
                     // format["%1, %2", _blueAliveCount, westPlayers] remoteExec ["hintSilent"];
                     format["Round time left: \n %1", [((_time)/60)+.01, "HH:MM"] call BIS_fnc_timetoString] remoteExec ["hintSilent"];
     
-                    sleep 1;
+                    sleep 10;
                 };
             };
             
