@@ -48,14 +48,14 @@ class Params
 		title = "Prepare time";
 
 		// must be integers - commas e.g 1.5 are not allowed
-		values[] = { 30, 45, 60, 120 };
+		values[] = { 10, 30, 45, 60, 120 };
 
 		// Description of each selectable item - must have the same number of items as 'values'
 		// If texts are missing, the values will be displayed instead
-		texts[] = { "30 seconds", "45 seconds", "1 minute", "2 minutes" };
+		texts[] = { "10 seconds", "30 seconds", "45 seconds", "1 minute", "2 minutes" };
 
 		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
-		default = 45;
+		default = 30;
 	};
 
 	class RoundConditionEnd { 

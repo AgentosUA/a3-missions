@@ -1,11 +1,7 @@
 _unit = (_this select 1);
 _loadout = (_this select 3) select 0;
 
-_side = 'opfor';
-
-if (side _unit == west) then {
-    _side = 'bluefor';
-};
+_side = 'bluefor';
 
 switch (_loadout) do {
     case 0: {
