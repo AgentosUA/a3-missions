@@ -1,49 +1,29 @@
-removeAllweapons player;
+removeAllWeapons player;
 removeAllItems player;
 removeAllAssignedItems player;
-removeuniform player;
-removevest player;
+removeUniform player;
+removeVest player;
 removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAdduniform 'rhs_uniform_acu_ucp2';
-for '_i' from 1 to 5 do {
-    player addItemtouniform 'ACE_packingBandage';
-};
-for '_i' from 1 to 5 do {
-    player addItemtouniform 'ACE_elasticBandage';
-};
-for '_i' from 1 to 5 do {
-    player addItemtouniform 'ACE_fieldDressing';
-};
-player addItemtouniform 'ACE_EarPlugs';
-for '_i' from 1 to 2 do {
-    player addItemtouniform 'ACE_morphine';
-};
-player addvest 'rhsusf_spcs_ucp_teamleader';
-for '_i' from 1 to 6 do {
-    player addItemtovest 'rhs_mag_30Rnd_556x45_M855A1_PMAG';
-};
-for '_i' from 1 to 2 do {
-    player addItemtovest 'rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red';
-};
-for '_i' from 1 to 2 do {
-    player addItemtovest 'rhs_mag_m67';
-};
-for '_i' from 1 to 2 do {
-    player addItemtovest 'rhs_mag_an_m8hc';
-};
-player addbackpack 'rhsusf_assault_eagleaiii_ucp';
-player addItemtobackpack 'rhsusf_m112_mag';
-player addWeapon 'rhs_weap_m4a1';
-player addPrimaryWeaponItem 'rhsusf_acc_ACOG';
-player addWeapon 'rhs_weap_m72a7';
-player addheadgear 'rhsusf_ach_helmet_ucp';
-player addgoggles 'rhs_googles_black';
+player forceAddUniform 'rhs_uniform_afghanka';
+for '_i' from 1 to 5 do { player addItemToUniform 'ACE_elasticBandage';};
+for '_i' from 1 to 5 do { player addItemToUniform 'ACE_packingBandage';};
+for '_i' from 1 to 5 do { player addItemToUniform 'ACE_fieldDressing';};
+player addItemToUniform 'ACE_EarPlugs';
+for '_i' from 1 to 2 do { player addItemToUniform 'ACE_morphine';};
+player addVest 'rhs_6b23_ML_6sh92';
+for '_i' from 1 to 6 do { player addItemToVest 'rhs_30Rnd_545x39_7N6_AK';};
+for '_i' from 1 to 2 do { player addItemToVest 'rhs_30Rnd_545x39_AK_green';};
+for '_i' from 1 to 2 do { player addItemToVest 'rhs_mag_rgd5';};
+for '_i' from 1 to 2 do { player addItemToVest 'wog_mag_rdgm_white';};
+player addBackpack 'rhs_sidor';
+player addWeapon 'rhs_weap_ak74m_desert';
+player addPrimaryWeaponItem 'rhs_acc_pso1m2';
+player addHeadgear 'rhs_6b7_1m_ess';
 player linkItem 'ItemMap';
-player linkItem 'ItemRadio';
-player linkItem 'ItemCompass';
 player linkItem 'ItemGPS';
-player linkItem 'tf_anprc152';
-player addWeapon 'binocular';
+player linkItem 'ItemCompass';
+player linkItem 'tf_fadak';
+player addWeapon 'Binocular';

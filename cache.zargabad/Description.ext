@@ -85,7 +85,7 @@ class Params
 		texts[] = { "Arsenal & presets", "Presets only", "Arsenal only" };
 
 		// must be listed in 'values' array, otherwise 0 is used. If not integer, fallback value is 1
-		default = 0;
+		default = 1;
 	};
 
 	class Stamina { 

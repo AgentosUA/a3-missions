@@ -40,7 +40,7 @@ player addWeapon 'rhs_weap_m4a1';
 player addPrimaryWeaponItem 'rhsusf_acc_ACOG';
 player addWeapon 'rhs_weap_m72a7';
 player addheadgear 'rhsusf_ach_helmet_ucp';
-player addgoggles 'rhs_googles_black';
+
 player linkItem 'ItemMap';
 player linkItem 'ItemRadio';
 player linkItem 'ItemCompass';

@@ -23,9 +23,10 @@ for '_i' from 1 to 3 do { player addItemToBackpack  'rhsusf_200rnd_556x45_M855_m
 player addWeapon 'rhs_weap_m249_pip_S';
 player addPrimaryWeaponItem 'rhsusf_acc_eotech_552';
 player addHeadgear 'rhsusf_ach_helmet_ucp';
-player addGoggles 'rhs_googles_black';
+
 player linkItem 'ItemMap';
 player linkItem 'ItemRadio';
 player linkItem 'ItemCompass';
 player linkItem 'ItemGPS';
+player linkItem 'tf_anprc152';
 player addWeapon 'Binocular';

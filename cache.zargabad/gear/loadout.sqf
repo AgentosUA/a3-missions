@@ -1,10 +1,10 @@
 _unit = (_this select 1);
 _loadout = (_this select 3) select 0;
 
-_side = 'bluefor';
+_side = 'opfor';
 
-if (side group _unit !== 'west') then {
-    _side = 'opfor';
+if (side _unit == west) then {
+    _side = 'bluefor';
 };
 
 switch (_loadout) do {
@@ -34,8 +34,8 @@ switch (_loadout) do {
     };
     
     default {
-        player setVariable ["Saved_loadout", getUnitloadout player];
-        // Save loadout
-        return;
+        // player setVariable ["Saved_loadout", getUnitloadout player];
+        // // Save loadout
+        // return;
     };
 };

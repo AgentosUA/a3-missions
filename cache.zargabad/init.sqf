@@ -48,27 +48,27 @@ loadSavedLoadout = {
     if (0 == ["ArsenalSettings"] call BIS_fnc_getParamValue || 1 == ["ArsenalSettings"] call BIS_fnc_getParamValue) then {
         /* BLUEFOR GEAR PRESETS */
     
-        bluefor_arsenal addAction ["Squad Leader", "gear\bluefor\loadout.sqf", [0], 6, false, true, "", ""];
+        bluefor_arsenal addAction ["Squad Leader", "gear\loadout.sqf", [0], 6, false, true, "", ""];
 
-        bluefor_arsenal addAction ["Automatic Rifleman", "gear\bluefor\loadout.sqf", [1], 6, false, true, "", ""];
+        bluefor_arsenal addAction ["Automatic Rifleman", "gear\loadout.sqf", [1], 6, false, true, "", ""];
 
-        bluefor_arsenal addAction ["Rifleman", "gear\bluefor\loadout.sqf", [2], 6, false, true, "", ""];
+        bluefor_arsenal addAction ["Rifleman", "gear\loadout.sqf", [2], 6, false, true, "", ""];
 
-        bluefor_arsenal addAction ["Medic", "gear\bluefor\loadout.sqf", [3], 6, false, true, "", ""];
+        bluefor_arsenal addAction ["Medic", "gear\loadout.sqf", [3], 6, false, true, "", ""];
 
-        bluefor_arsenal addAction ["Marksman", "gear\bluefor\loadout.sqf", [4], 6, false, true, "", ""];
+        bluefor_arsenal addAction ["Marksman", "gear\loadout.sqf", [4], 6, false, true, "", ""];
 
         /* OPFOR GEAR PRESETS */
 
-        opfor_arsenal addAction ["Squad Leader", "gear\opfor\loadout.sqf", [0], 6, false, true, "", ""];
+        opfor_arsenal addAction ["Командир", "gear\loadout.sqf", [0], 6, false, true, "", ""];
 
-        opfor_arsenal addAction ["Automatic Rifleman", "gear\opfor\loadout.sqf", [1], 6, false, true, "", ""];
+        opfor_arsenal addAction ["Пулеметчик", "gear\loadout.sqf", [1], 6, false, true, "", ""];
 
-        opfor_arsenal addAction ["Rifleman", "gear\opfor\loadout.sqf", [2], 6, false, true, "", ""];
+        opfor_arsenal addAction ["Стрелок", "gear\loadout.sqf", [2], 6, false, true, "", ""];
 
-        opfor_arsenal addAction ["Medic", "gear\opfor\loadout.sqf", [3], 6, false, true, "", ""];
+        opfor_arsenal addAction ["Медик", "gear\loadout.sqf", [3], 6, false, true, "", ""];
 
-        opfor_arsenal addAction ["Marksman", "gear\opfor\loadout.sqf", [4], 6, false, true, "", ""];
+        opfor_arsenal addAction ["Снайпер", "gear\loadout.sqf", [4], 6, false, true, "", ""];
     };
 };
 
